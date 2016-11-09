@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Parth Desai" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Index Page</title>
+    <link href="/static/grumblr/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/static/grumblr/css/signin.css" rel="stylesheet">
+    <link href="/static/grumblr/css/style.css" rel="stylesheet">
+  </head>
+
+  <body class = "indexpage">;
+    <div class="row">
+      <div class = "name">  
+       <h1 class ="logo1" ><b>grumblr<b></h1> 
+      </div> 
+    </div>
+
+    <div class="container post1">
+      {% for error in errors %}
+        <h3>
+        {{error}}
+        </h3>
+      {% endfor %}
+
+
+
+      {% for error in form.non_field_errors %}
+      <h3 >
+      {{error}}
+      </h3>
+      {% endfor %}
+
+      <form class="form-signin" action ={% url 'index' %} method="POST">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        {{field}}
+        {{field.errors}}
+        <br><br>
+       {% endfor %}
+       <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+      </form>
+
+      <form class="form-signin" action={% url 'signup' %}>
+        <h3  class = "form-signin-heading name" > Not a member?</h3>
+        <button class="btn btn-lg btn-primary btn-block w3-hover-red button-color" type="submit"> Signup</button>
+        {% csrf_token %}
+      </form>  
+      <br>
+      <form class="form-signin" action="/emailpage/"{% url 'emailpage' %}>
+        <button class="btn btn-lg btn-primary btn-block w3-hover-red button-color" type="submit"> Forgot Password</button>
+        {% csrf_token %}
+      </form> 
+
+      <br>
+
+    </div>
+
+    
+  </body>
+</html>

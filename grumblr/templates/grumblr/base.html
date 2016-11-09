@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="Parth Desai" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link href="/static/grumblr/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="/static/grumblr/css/signin.css" rel="stylesheet">
+    <link href="/static/grumblr/css/style.css" rel="stylesheet">
+</head>
+
+
+<body class="background">
+    <div class="row  orangebar">
+
+    {% block logo %}
+        <div class="col-md-6">
+            <a href={% url 'globalpage' %}>
+                <h1 class="logo"><b>grumblr</b></h1>
+            </a>
+        </div>
+    {% endblock %}
+        <div class="col-md-6">
+            <div class="col-md-8">
+                <h3 class="welcome"><b> Welcome</b></h3>
+            </div>
+            {% block logout %}
+            <div class="col-md-4">
+                <form action={% url 'logout' %}>
+                    <button class="btn btn-lg btn-primary btn-block logout" type="submit">Logout</button>
+                </form>
+            </div>
+            {% endblock %}
+
+        </div>
+    </div>
+
+
+{% block row %}
+{% endblock %}
+</body>
+</html>
+

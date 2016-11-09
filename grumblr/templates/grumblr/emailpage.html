@@ -1,0 +1,58 @@
+{% extends "grumblr/base.html" %}
+{% block logo %}
+
+  <div class="col-md-6">
+    <h1 class="logo"><b>grumblr</b></h1>
+  </div>
+
+{% endblock %}
+
+{% block logout %}
+{% endblock %}
+
+
+{% block row %}
+<h3 class="post1"><b>Enter username and your registered email address to reset password</b></h3>
+{% if message %}
+
+<p style = "font-size:30px">{{message}}<p>
+
+{% endif %}
+
+{% if error_message %}
+<h3>{{error_message}}<h3>
+{% endif %}
+<br>
+
+<form action ={% url 'emailpage' %} method="POST">
+      {% for error in form.non_field_errors %}
+      <p class = "post1">
+      {{ error }}
+      </p>
+      {% endfor %}
+      {% for field in form.visible_fields %}
+      {% for error in field.errors %}
+       <p class = "post1">
+      {{ error }}
+      </p>
+      {% endfor %}
+      {% endfor %}
+    
+    <div>
+        {% for field in form.visible_fields %}
+        {{field}}
+        <br><br>
+        {% endfor %}
+        <div class="sign">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">submit</button >
+        </div>
+    </div>
+    {% csrf_token %}
+</form> 
+<br>
+<form  class= "sign" action={% url 'index' %}>
+ <button class="btn btn-lg btn-primary btn-block" type="submit">Back to login page</button>
+</form>
+
+
+{% endblock %}

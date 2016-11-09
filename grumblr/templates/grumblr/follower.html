@@ -1,0 +1,95 @@
+{% extends "grumblr/base.html" %}
+{% block row %}
+    <div class="row post1 color">
+        <div class="col-md-3">
+            <div class="row profilebox pic">
+                    <strong class="profilename1">{{user.username}}</strong>
+                    <img class="img-responsive pic" src ="{{image.docfile.url}}" alt="Image">
+                <p> <b> First Name:</b> {{user.first_name}}</p>
+                <p> <b> Last Name: </b> {{user.last_name}}</p>
+                <p> <b> Age: </b>{{bio.age}}</p>
+                <p> <b> Bio: </b>{{bio.short_bio}}</p>
+            </div>
+            <br>
+            <br>
+        </div>
+        <h3 >Follower Page!</h3 >
+        <div class="col-md-7 post1">
+        {% for content in items %}
+            {% for follow_user in allfollowers %}
+                {% if content.user == follow_user %}
+                   <br><br>
+                    <div class="row">
+                        <div class="col-md-3">
+                            {% for doc in documents %}
+                            {% if doc.user == content.user %}
+                            <img src="{{doc.docfile.url}}" class="img-circle" alt="Image" width=150 height=100>
+                            {% endif %}
+                            {% endfor %}
+                             <form action={% url 'profile' %} method=POST>
+                                <button type='submit' name='profile' class='profile11 remove_button' value={{content.user}}>
+                                    <strong>{{content.user}}</strong>
+                                </button>
+                                {% csrf_token %}
+                            </form>
+                        </div>
+
+                    <div class="col-md-5 date post1">
+                        <p> {{content.text}}</p>
+                        <h6>{{content.date_time}}</h6>
+                        <div id = commentblock{{content.pk}}>
+                            {% for com in allcomments %}
+                                {% if com.userpost_id == content.pk %}
+                                <div id = "comment_append">
+                                        <div class="row post1">
+                                            <div class = "col-md-3">
+                                                {% for doc in documents %}
+                                                    {% if doc.user == com.user %}
+                                                        <img src="{{doc.docfile.url}}" class="img-circle" alt="Image" width=100 height=70>
+                                                         <br>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <a href ="/prof/{{com.user}}"> {{com.user}}</a>
+    
+                                            </div>
+                                            <div class = "col-md-9">
+                                                    <p>{{com.usercomment}} </p>
+                                                    <h6>{{com.date_time}}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br><br>
+                                {% endif %}
+                            {% endfor %} 
+                        </div>  
+                    </div>
+
+                    <div id = comment_form{{content.pk}}>
+                        <div class = "col-md-4 post1">
+                            <form class = "new_comments" id = '{{content.id}}'>
+                            <input id="id_comment" maxlength="42" name="comment_{{content.id}}" placeholder="Add your comment here" type="text" required=True/>
+                            <br><br>
+                            <button type="submit">Submit Comment</button>
+                            <br><br>
+                            </form>
+                        </div>
+                    </div>
+
+
+                 
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %} 
+    </div>
+    <br>
+    <br>
+     <div class="col-md-12 post1">
+     <form action={% url 'globalpage' %}>
+                <button class="btn btn-lg btn-primary btn-block feedbutton" type="submit">Go to my news feed</button>
+    </form>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/static/grumblr/js/follower.js" type="text/javascript"></script>
+           
+{% endblock %}

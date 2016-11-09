@@ -1,0 +1,70 @@
+{% extends "grumblr/base.html" %}
+{% block row %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row profilebox pic">
+                    <strong class="profilename1">{{user.username}}</strong>
+                    
+                    <img class="img-responsive pic" src ="{{documents.docfile.url}}" alt="Image">
+        
+                <p> <b> First Name:</b> {{user.first_name}}</p>
+                <p> <b> Last Name: </b> {{user.last_name}}</p>
+                <p> <b> Age: </b>{{bio.age}}</p>
+                <p style ="word-break: break-all"> <b> Bio: </b>{{bio.short_bio}}</p>
+            </div>
+            <br>
+            <br>
+        </div>
+        <div class="col-md-7 post1">
+        <form action={% url 'editpage' %}, method="POST">
+            <div class="row post1">
+            <h3> Edit Your Personal Information </h3>
+            {% for field in form.visible_fields %}
+            {{field}}
+            <br><br>
+            {% endfor %}
+            {% csrf_token %}
+            </div>
+            <button class="btn btn-lg btn-primary btn-block feedbutton" type="submit">Submit</button>
+        </form>
+        <br>
+        <br>
+        <form action={% url 'editpage' %} method="POST" enctype="multipart/form-data" class="post1">
+        <h3> Add/Change Image</h3>
+            {% for error in form1.non_field_errors %}
+            <p class="post1">
+            {{ error }}
+            </p>
+            {% endfor %}
+            {% for field in form1.visible_fields %}
+            {% for error in field.errors %}
+            <p class="post1">
+            {{ error }}
+            </p>
+            {% endfor %}
+            {% endfor %}
+
+            <!--{{form1.docfile.label_tag }}-->
+           <div class="btn btn-lg btn-primary btn-block feedbutton">
+            {{ form1.docfile }}
+            </div>
+            <button class="btn btn-lg btn-primary btn-block feedbutton" type="submit">Upload Image</button>
+            {% csrf_token %}
+        </form>
+        <br><br>
+
+
+        <h3 style = "color:black"> Change/Reset Password</h3>
+        <form action={% url 'emailpage' %}>
+            <button class="btn btn-lg btn-primary btn-block feedbutton" type="submit">Change Password</button>
+        </form>
+        <br><br>
+        <form action={% url 'globalpage' %}>
+            <button class="btn btn-lg btn-primary btn-block feedbutton" type="submit">Go to my news feed</button>
+        </form>
+        
+        </div>
+        <br>
+        <br>
+    </div>
+{% endblock %}

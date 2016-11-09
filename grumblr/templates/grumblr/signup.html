@@ -1,0 +1,61 @@
+{% extends "grumblr/base.html" %}
+{% block logo %}
+
+  <div class="col-md-6">
+    <h1 class="logo"><b>grumblr</b></h1>
+  </div>
+
+{% endblock %}
+
+{% block logout %}
+{% endblock %}
+
+
+{% block row %}
+    <div class="container post1">
+    <form class="form-signin" action={% url 'globalpage' %}>
+        <h2 class="form-signin-heading post1"><b>You know what to do!</b></h2>
+    </form>
+    {% if message %}
+    <br><h3>{{message}}</h3>
+    {% endif %}
+
+    <form action ={% url 'signup' %} method="POST">
+
+      {% for error in form.non_field_errors %}
+      <p>
+      {{ error }}
+      </p>
+      {% endfor %}
+      {% for field in form.visible_fields %}
+      {% for error in field.errors %}
+       <p>
+      {{ error }}
+      </p>
+      {% endfor %}
+      {% endfor %}
+    
+    <div class = "boxes">
+        {% for field in form.visible_fields %}
+        {{field}}
+        <br><br>
+        {% endfor %}
+        <div class="sign">
+        <button type="submit" class="btn btn-lg btn-primary btn-block">submit</button >
+        </div>
+    </div>
+    {% csrf_token %}
+    </form> 
+    
+        <div class = "sign ">
+            <form action={% url 'index'%}>
+            <br>
+            <button class="btn btn-lg btn-primary btn-block name" type="submit">Back to login page</button>
+            </form>
+
+        </div>
+        
+
+    </div> 
+{% endblock %}
+

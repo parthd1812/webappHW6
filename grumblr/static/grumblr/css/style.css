@@ -1,0 +1,167 @@
+.black {
+  color: black;
+}
+.post1 {
+	color:black; 
+}
+
+.sign {
+  color:white; width:20em; 
+  margin:auto; 
+  text-align: center; 
+  margin-top:0px;
+  align:center;
+  color: white;
+}
+.name {
+	color: black;
+}
+.background {
+	text-align:center; 
+	background-color:white;
+	background-repeat:no-repeat; 
+	padding:0 0 0 0px;
+}
+.logo {
+	font-size: 60px; 
+	color:white; 
+	font-style:italic; 
+	margin-left:0px;
+	padding-left:1cm; 
+	margin-top:0px;
+	background-color:#FF8300; 
+	padding-top:10px; 
+	padding-bottom:10px;
+	text-align:left;
+}
+.box {
+	width:20em;
+	height: 40px;
+
+
+
+}
+.indexpage {
+	background-image:url("/static/grumblr/images/world1.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.logo1 {
+	font-size: 100px;
+	color:white; 
+	font-style: italic;
+}
+.button-color {
+	background-color:orange; 
+}
+.container {
+	text-align: center;
+	
+}
+.size {
+	width:20px;
+	height:40px;
+}
+.logout {
+	font-size:20px;
+	width:10em;
+	margin-top:25px;
+}
+.welcome {
+	font-size: 30px; 
+	color:white;
+	text-align:right;
+	padding-left:5cm; 
+	padding-top:10px;
+}
+.newsfeed{
+	color:black;
+}
+.username {
+	font-size:25px;
+	color:#4b7d96;
+}
+.post {
+	color:black; 
+	font-size:18px;
+	text-align:left;
+}
+
+
+.ads {
+	color:black;
+	border-style: solid; 
+	border-width: 5px; 
+	border-color:black; 
+	padding-bottom:30px;
+}
+.remove_button {
+border: none;
+background: none;
+color:black;
+}
+.pbutton {
+	font-size:20px;
+	width:200px;
+	color:white; 
+	margin:auto;
+	text-decoration:none; 
+	text-align:center;
+}
+.textbox{
+	width:600px;
+	margin:auto;
+}
+.postbutton{
+	width:200px;
+	margin-left: 685px
+}
+.orangebar {
+	background-color:#FF8300;
+	margin-right:-30px
+}
+.feedbutton {
+	font-size:20px;
+	width:10em;
+	margin-top:10px; 
+	margin:auto;
+	color:white;
+	text-decoration:none; 
+    text-align:center
+}
+.profilename {
+	font-size:25px;
+	color:#4b7d96;
+}
+.date {
+	color:black; 
+	font-size:18px;
+	text-align:left
+}
+.profilename1 {
+	font-size:40px;
+	color:#4b7d96;
+}
+.profilebox {
+	color:black; 
+	font-size:20px;
+	border-style: solid; 
+	border-width: 5px;
+}
+.profile11 {
+	cursor:pointer;
+	padding:0;
+	font-family:inherit;
+	font-size: inherit;
+
+}
+.pic{
+	margin:auto;
+}
+.margin {
+	margin-left:-30px
+}
+.color_error{
+	color:white;
+}
+
